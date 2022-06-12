@@ -11,7 +11,7 @@ use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use UnexpectedValueException;
 
-final class SymfonyQueryBus implements QueryBus
+final class MessengerQueryBus implements QueryBus
 {
     use HandleTrait {
         handle as handleQuery;
