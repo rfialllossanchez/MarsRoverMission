@@ -10,3 +10,9 @@ services:
       - '../src/Domain/'
       - '../src/Tests/'
       - '../src/Kernel.php'
+
+  _instanceof:
+    App\Shared\Domain\Bus\Query\QueryHandler:
+      tags: [ { name: messenger.message_handler, bus: query.bus } ]
+    App\Shared\Domain\Bus\Command\CommandHandler:
+      tags: [ { name: messenger.message_handler, bus: command.bus } ]
