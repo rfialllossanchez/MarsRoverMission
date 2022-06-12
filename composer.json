@@ -7,6 +7,7 @@
         "php": ">=8.0.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-readline": "*",
         "symfony/console": "*",
         "symfony/dotenv": "*",
         "symfony/flex": "^2",

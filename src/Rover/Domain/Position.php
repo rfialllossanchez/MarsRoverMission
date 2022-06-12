@@ -30,6 +30,6 @@ final class Position
 
     public function __toString(): string
     {
-        return sprintf('(%d, %d)', $this->xAxis, $this->yAxis);
+        return sprintf('(%d,%d)', $this->xAxis, $this->yAxis);
     }
 }

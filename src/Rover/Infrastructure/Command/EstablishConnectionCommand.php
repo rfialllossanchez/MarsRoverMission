@@ -20,6 +20,8 @@ final class EstablishConnectionCommand extends Command
         '- Press 3 to finish connection'
     ];
 
+    private bool $isSystemRunning = false;
+
     public function __construct(
         private LoggerInterface $logger,
         private SendRoverCommandsController $sendRoverCommands,
@@ -34,21 +36,14 @@ final class EstablishConnectionCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->logger->notice('Initializing...');
-        $this->logger->notice('Connection established successfully!');
+        $this->printIntro();
+        $this->isSystemRunning = true;
+        $this->printAvailableOptions();
 
-        $this->logger->notice(
-            'Available Options: ' . PHP_EOL . implode(PHP_EOL, self::AVAILABLE_OPTIONS),
-        );
-
-        $option = fread(STDIN, 1);
-        while ($option != 3) {
-            $this->processSelectedOption($option);
-            $option = fread(STDIN, 1);
-        }
-
-//        $this->logger->notice('Shutting down system...');
-//        $this->logger->notice('Bye bye, see you next time ;)');
+        do {
+            $selectedOption = readline('Select one option: ');
+            $this->processSelectedOption($selectedOption);
+        } while ($this->isSystemRunning);
 
         return Command::SUCCESS;
     }
@@ -57,10 +52,29 @@ final class EstablishConnectionCommand extends Command
     {
         match ($option) {
             '1' => $this->printRoverPosition(),
-            '2' => ($this->sendRoverCommands)([CommandValueObject::LEFT, CommandValueObject::RIGHT]),
-            '3' => $this->logger->notice('Process option : ' . $option),
-            default => $this->logger->notice('Process default option: ' . $option),
+            '2' => $this->sendRoverCommands(),
+            '3' => $this->shutDownConnection(),
+            default => $this->printAvailableOptions(),
         };
+    }
+
+    private function printIntro(): void
+    {
+        $this->logger->notice('_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _ ');
+        $this->logger->notice('|\/| |__| |__/ [__     |__/ |  | |  | |___ |__/    |\/| | [__  [__  | |  | |\ |');
+        $this->logger->notice('|  | |  | |  \ ___]    |  \ |__|  \/  |___ |  \    |  | | ___] ___] | |__| | \|');
+        $this->logger->notice('_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _');
+        $this->logger->notice('Initializing...');
+        $this->logger->notice('Connection established successfully!');
+    }
+
+    private function printAvailableOptions(): void
+    {
+        $this->logger->notice('Available options: ');
+        foreach (self::AVAILABLE_OPTIONS as $option) {
+            $this->logger->notice($option);
+        }
+        $this->logger->notice('');
     }
 
     private function printRoverPosition(): void
@@ -69,5 +83,20 @@ final class EstablishConnectionCommand extends Command
         $this->logger->notice(
             sprintf('Current Rover coordinates are: %s', $roverPosition->toString())
         );
+    }
+
+    private function sendRoverCommands(): void
+    {
+        $commands = readline('Enter commands: [F, L, R]: ');
+
+        ($this->sendRoverCommands)(str_split($commands));
+        $this->printRoverPosition();
+    }
+
+    private function shutDownConnection(): void
+    {
+        $this->logger->notice('Shutting down system...');
+        $this->logger->notice('Bye bye, see you next time ;)');
+        $this->isSystemRunning = false;
     }
 }
