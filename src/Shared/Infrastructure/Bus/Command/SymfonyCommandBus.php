@@ -20,15 +20,6 @@ class SymfonyCommandBus implements CommandBus
 
     public function dispatch(Command $command): void
     {
-        try {
-            $this->bus->dispatch($command);
-        } catch (HandlerFailedException $receivedException) {
-            $unwrappedException = $receivedException;
-            while ($unwrappedException instanceof HandlerFailedException) {
-                $unwrappedException = $unwrappedException->getPrevious();
-            }
-
-            throw $unwrappedException ?? $receivedException;
-        }
+        $this->bus->dispatch($command);
     }
 }
