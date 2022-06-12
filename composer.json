@@ -11,10 +11,10 @@
         "symfony/dotenv": "*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "*",
+        "symfony/messenger": "6.0.*",
+        "symfony/monolog-bundle": "^3.8",
         "symfony/runtime": "*",
         "symfony/yaml": "*"
-    },
-    "require-dev": {
     },
     "config": {
         "allow-plugins": {
