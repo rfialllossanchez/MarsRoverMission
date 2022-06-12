@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rover\Application\Model;
+namespace App\Rover\Application\Model\Command;
 
 use App\Rover\Application\Factory\CommandCollectionFactory;
 use App\Rover\Application\Factory\PlanetFactory;
@@ -12,7 +12,7 @@ use App\Rover\Domain\ValueObject\CommandValueObject;
 use App\Shared\Domain\Bus\Command\CommandHandler;
 use Psr\Log\LoggerInterface;
 
-final class UpdateRoverPositionHandler implements CommandHandler
+final class SendRoverCommandHandler implements CommandHandler
 {
     public function __construct(
         private LoggerInterface $logger,
@@ -24,7 +24,7 @@ final class UpdateRoverPositionHandler implements CommandHandler
     {
     }
 
-    public function __invoke(UpdateRoverPositionCommand $command): void
+    public function __invoke(SendRoverCommand $command): void
     {
         $rover = ($this->roverFactory)();
         $planet = ($this->planetFactory)();

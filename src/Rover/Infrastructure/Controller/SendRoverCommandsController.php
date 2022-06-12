@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Rover\Infrastructure\Controller;
 
-use App\Rover\Application\Model\UpdateRoverPositionCommand;
+use App\Rover\Application\Model\Command\SendRoverCommand;
 use App\Shared\Domain\Bus\Command\CommandBus;
 use App\Shared\Domain\Bus\Query\QueryBus;
 use App\Shared\Infrastructure\Controller\BaseController;
@@ -12,7 +12,7 @@ use DomainException;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-final class ExecuteCommandsController extends BaseController
+final class SendRoverCommandsController extends BaseController
 {
     public function __construct(
         protected QueryBus $queryBus,
@@ -29,7 +29,7 @@ final class ExecuteCommandsController extends BaseController
     {
         try {
             $this->commandBus->dispatch(
-                new UpdateRoverPositionCommand($commands)
+                new SendRoverCommand($commands)
             );
         } catch (DomainException $domainException) {
             $this->logger->error(
