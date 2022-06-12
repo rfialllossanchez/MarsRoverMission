@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rover\Infrastructure\Command;
+namespace App\Rover\Infrastructure\Console;
 
 use App\Rover\Domain\ValueObject\CommandValueObject;
 use App\Rover\Infrastructure\Controller\GetRoverPositionController;
@@ -60,7 +60,7 @@ final class EstablishConnectionCommand extends Command
 
     private function printIntro(): void
     {
-        $this->logger->notice('_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _ ');
+        $this->logger->notice('_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _');
         $this->logger->notice('|\/| |__| |__/ [__     |__/ |  | |  | |___ |__/    |\/| | [__  [__  | |  | |\ |');
         $this->logger->notice('|  | |  | |  \ ___]    |  \ |__|  \/  |___ |  \    |  | | ___] ___] | |__| | \|');
         $this->logger->notice('_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _');

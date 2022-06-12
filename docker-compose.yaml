@@ -1,0 +1,7 @@
+version: "3.4"
+
+services:
+  rover:
+    build:
+      context: .
+    restart: unless-stopped
