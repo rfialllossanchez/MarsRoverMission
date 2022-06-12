@@ -3,8 +3,6 @@ services:
         class: Monolog\Formatter\LineFormatter
         arguments:
             - "%%message%%\n"
-    monolog.formatter.html:
-        class: Monolog\Formatter\HtmlFormatter
 
 monolog:
     handlers:
