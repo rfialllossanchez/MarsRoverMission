@@ -7,4 +7,6 @@ namespace App\Shared\Domain\Bus\Query;
 interface Response
 {
     public function toArray(): array;
+
+    public function toString(): string;
 }

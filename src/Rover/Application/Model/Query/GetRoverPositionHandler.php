@@ -19,9 +19,6 @@ final class GetRoverPositionHandler implements QueryHandler
     public function __invoke(GetRoverPositionQuery $query): RoverPositionResponse
     {
         $rover = ($this->roverFactory)();
-        return new RoverPositionResponse(
-            $rover->currentPosition()->xAxis(),
-            $rover->currentPosition()->yAxis()
-        );
+        return new RoverPositionResponse($rover->currentPosition());
     }
 }

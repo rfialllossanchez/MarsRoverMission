@@ -28,8 +28,8 @@ final class Position
         return $this->yAxis;
     }
 
-    public function toString(): string
+    public function __toString(): string
     {
-        return sprintf('(%d, $d)', $this->xAxis, $this->yAxis);
+        return sprintf('(%d, %d)', $this->xAxis, $this->yAxis);
     }
 }
