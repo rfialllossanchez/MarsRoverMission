@@ -21,9 +21,9 @@ abstract class BaseController
     {
     }
 
-    public function ask(Query $query): Response
+    public function handle(Query $query): Response
     {
-        return $this->queryBus->ask($query);
+        return $this->queryBus->handle($query);
     }
 
     public function dispatch(Command $command): void
