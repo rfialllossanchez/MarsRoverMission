@@ -13,7 +13,7 @@ final class RoverPositionStrategyFactory
 {
     public function __invoke(Rover $rover, CommandValueObject $command): Position
     {
-        if ($command->isFront()) {
+        if ($command->isForward()) {
             return Position::create(
                 $rover->currentPosition()->xAxis(),
                 $rover->currentPosition()->yAxis() + 1,

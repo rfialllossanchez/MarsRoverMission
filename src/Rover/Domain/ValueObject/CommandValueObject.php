@@ -6,18 +6,24 @@ namespace App\Rover\Domain\ValueObject;
 
 class CommandValueObject extends StringValueObject
 {
-    public const FRONT = 'f';
+    public const FORWARD = 'f';
     public const RIGHT = 'r';
     public const LEFT = 'l';
+
+    public const VALUES_MAPPING = [
+        'f' => 'forward',
+        'r' => 'right',
+        'l' => 'left'
+    ];
 
     public static function createFromValue(string $value): CommandValueObject
     {
         return new CommandValueObject($value);
     }
 
-    public function isFront(): bool
+    public function isForward(): bool
     {
-        return $this->value === self::FRONT;
+        return $this->value === self::FORWARD;
     }
 
     public function isRight(): bool
@@ -28,5 +34,10 @@ class CommandValueObject extends StringValueObject
     public function isLeft(): bool
     {
         return $this->value === self::LEFT;
+    }
+
+    public function beauty(): string
+    {
+        return self::VALUES_MAPPING[$this->value];
     }
 }

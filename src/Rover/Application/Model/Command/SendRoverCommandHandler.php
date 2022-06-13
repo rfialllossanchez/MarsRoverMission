@@ -34,9 +34,7 @@ final class SendRoverCommandHandler implements CommandHandler
         /** @var CommandValueObject $nextCommand */
         foreach ($commandCollection as $nextCommand) {
             try {
-                $this->logger->notice(
-                    sprintf('Updating Rover position: [%s]', (string)$nextCommand)
-                );
+                $this->notifyAction($nextCommand);
 
                 ($this->updateRoverPosition)(
                     $nextCommand,
@@ -45,9 +43,16 @@ final class SendRoverCommandHandler implements CommandHandler
                 );
             } catch (ObstacleDetectedException $obstacleDetectedException) {
                 $this->logger->warning(
-                    $obstacleDetectedException->getMessage()
+                    'Warning! ' . $obstacleDetectedException->getMessage()
                 );
             }
         }
+    }
+
+    private function notifyAction(CommandValueObject $nextCommand): void
+    {
+        $this->logger->notice(
+            sprintf('Rover is moving to %s...', $nextCommand->beauty())
+        );
     }
 }

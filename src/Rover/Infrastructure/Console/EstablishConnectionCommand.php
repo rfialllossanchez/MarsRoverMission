@@ -86,7 +86,7 @@ final class EstablishConnectionCommand extends Command
 
     private function sendRoverCommands(): void
     {
-        $commands = readline('Enter commands: [f, l, r]: ');
+        $commands = readline('Enter commands - [Forward: f, Left: l, Right: r]: ');
 
         ($this->sendRoverCommands)(str_split($commands));
         $this->printRoverPosition();
