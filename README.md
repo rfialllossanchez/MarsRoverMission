@@ -33,15 +33,15 @@ Simple console application to send commands to Mars rover.
 $ tree -L 4 src
 
 src
-|-- Rover // Features related to bussiness
-|   |-- Application // The application layer
-|   |   |-- Factory // Domain objects instantation
-|   |   |-- Model // Data transformer objects 
+|-- Rover
+|   |-- Application // Application layer holds: domain objects creators, CQRS data transformers and application services
+|   |   |-- Factory
+|   |   |-- Model
 |   |   |   |-- Command 
 |   |   |   |-- Query 
 |   |   |   |-- Response 
-|   |   |-- Service (Applications services) 
-|   |-- Domain // The domain layer
+|   |   |-- Service
+|   |-- Domain // Domain layer holds: domain entities, value objects, etc
 |   |   |-- Collection 
 |   |   |-- Exception 
 |   |   |-- ValueObject
@@ -49,14 +49,16 @@ src
 |   |   |-- Planet.php 
 |   |   |-- Position.php  
 |   |   |-- Rover.php  
-|   `-- Infrastructure // The infrastructure layer
+|   `-- Infrastructure // Infrastructure layer
 |       |-- Console
 |       |   |-- EstablishConnectionCommand.php
 |       `-- Controller
+|           `-- GetPlanetDetailsController.php
 |           `-- GetRoverPositionController.php
+|           `-- SetRoverInitialPositionController.php
 |           `-- SendRoverCommandsController.php
 |
-|-- Shared
+|-- Shared // Non-bussiness logic
 |   |-- Domain
 |   |   |-- Bus 
 |   `-- Infrastructure
