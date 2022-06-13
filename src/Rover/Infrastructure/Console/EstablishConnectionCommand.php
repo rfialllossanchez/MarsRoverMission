@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Rover\Infrastructure\Console;
 
-use App\Rover\Domain\ValueObject\CommandValueObject;
 use App\Rover\Infrastructure\Controller\GetRoverPositionController;
 use App\Rover\Infrastructure\Controller\SendRoverCommandsController;
 use Psr\Log\LoggerInterface;
@@ -48,9 +47,9 @@ final class EstablishConnectionCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function processSelectedOption(string $option): void
+    private function processSelectedOption(string $selectedOption): void
     {
-        match ($option) {
+        match ($selectedOption) {
             '1' => $this->printRoverPosition(),
             '2' => $this->sendRoverCommands(),
             '3' => $this->shutDownConnection(),

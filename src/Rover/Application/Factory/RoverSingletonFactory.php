@@ -7,7 +7,7 @@ namespace App\Rover\Application\Factory;
 use App\Rover\Domain\Position;
 use App\Rover\Domain\Rover;
 
-final class RoverFactory
+final class RoverSingletonFactory
 {
     private static ?Rover $rover = null;
     private const INITIAL_XAXIS_POSITION = 0;

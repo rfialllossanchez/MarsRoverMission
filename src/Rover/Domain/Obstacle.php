@@ -10,6 +10,11 @@ final class Obstacle
     {
     }
 
+    public static function create(Position $position): Obstacle
+    {
+        return new Obstacle($position);
+    }
+
     public function position(): Position
     {
         return $this->position;

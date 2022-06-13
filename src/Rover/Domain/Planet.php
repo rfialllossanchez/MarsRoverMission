@@ -8,6 +8,11 @@ use App\Rover\Domain\Collection\ObstacleCollection;
 
 final class Planet
 {
+    public const DEFAULT_NAME = 'Mars';
+    public const DEFAULT_HORIZONTAL_SIZE = 200;
+    public const DEFAULT_VERTICAL_SIZE = 200;
+    public const DEFAULT_OBSTACLES = 10;
+
     public function __construct(
         private string $name,
         private int $horizontalSize,
