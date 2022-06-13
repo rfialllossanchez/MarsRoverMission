@@ -28,3 +28,39 @@
 
 Simple console application to send commands to Mars rover.
 
+### Structure
+
+```scala
+$ tree -L 4 src
+
+src
+|-- Rover // Features related to bussiness
+|   |-- Application // The application layer
+|   |   |-- Factory // Domain objects instantation
+|   |   |-- Model // Data transformer objects 
+|   |   |   |-- Command 
+|   |   |   |-- Query 
+|   |   |   |-- Response 
+|   |   |-- Service (Applications services) 
+|   |-- Domain // The domain layer
+|   |   |-- Collection 
+|   |   |-- Exception 
+|   |   |-- ValueObject
+|   |   |-- Obstacle.php
+|   |   |-- Planet.php 
+|   |   |-- Position.php  
+|   |   |-- Rover.php  
+|   `-- Infrastructure // The infrastructure layer
+|       |-- Console
+|       |   |-- EstablishConnectionCommand.php
+|       `-- Controller
+|           `-- GetRoverPositionController.php
+|           `-- SendRoverCommandsController.php
+|
+|-- Shared
+|   |-- Domain
+|   |   |-- Bus 
+|   `-- Infrastructure
+|       `-- Bus
+|       `-- Controller
+```
