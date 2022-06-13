@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Rover\Infrastructure\Console;
 
+use App\Rover\Application\Model\Query\GetPlanetDetailsController;
 use App\Rover\Infrastructure\Controller\GetRoverPositionController;
 use App\Rover\Infrastructure\Controller\SendRoverCommandsController;
 use Psr\Log\LoggerInterface;
@@ -14,9 +15,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class EstablishConnectionCommand extends Command
 {
     private const AVAILABLE_OPTIONS = [
-        '- Press 1 to check Rover position',
-        '- Press 2 to send commands to Rover',
-        '- Press 3 to finish connection'
+        '- Press 1 to check planet details',
+        '- Press 2 to check Rover position',
+        '- Press 3 to send commands to Rover',
+        '- Press 4 to finish connection'
     ];
 
     private bool $isSystemRunning = false;
@@ -25,6 +27,7 @@ final class EstablishConnectionCommand extends Command
         private LoggerInterface $logger,
         private SendRoverCommandsController $sendRoverCommands,
         private GetRoverPositionController $getRoverPosition,
+        private GetPlanetDetailsController $getPlanetDetails,
     )
     {
         parent::__construct();
@@ -50,9 +53,10 @@ final class EstablishConnectionCommand extends Command
     private function processSelectedOption(string $selectedOption): void
     {
         match ($selectedOption) {
-            '1' => $this->printRoverPosition(),
-            '2' => $this->sendRoverCommands(),
-            '3' => $this->shutDownConnection(),
+            '1' => $this->printPlanetDetails(),
+            '2' => $this->printRoverPosition(),
+            '3' => $this->sendRoverCommands(),
+            '4' => $this->shutDownConnection(),
             default => $this->printAvailableOptions(),
         };
     }
@@ -74,6 +78,13 @@ final class EstablishConnectionCommand extends Command
             $this->logger->notice($option);
         }
         $this->logger->notice('');
+    }
+
+    private function printPlanetDetails(): void
+    {
+        $planetDetails = ($this->getPlanetDetails)();
+        $this->logger->notice('Planet information:');
+        $this->logger->notice($planetDetails->toString());
     }
 
     private function printRoverPosition(): void

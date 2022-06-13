@@ -12,4 +12,15 @@ final class ObstacleCollection extends Collection
     {
         return $classToBeAdded instanceof Obstacle;
     }
+
+    public function toArray(): array
+    {
+        $output = [];
+        /** @var Obstacle $obstacle */
+        foreach ($this->collection as $obstacle) {
+            $output [] = (string)$obstacle->position();
+        }
+
+        return $output;
+    }
 }
