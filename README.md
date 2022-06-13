@@ -49,7 +49,7 @@ src
 |   |   |-- Planet.php 
 |   |   |-- Position.php  
 |   |   |-- Rover.php  
-|   `-- Infrastructure // Infrastructure layer
+|   `-- Infrastructure // Infrastructure layer: entry point to external interactions
 |       |-- Console
 |       |   |-- EstablishConnectionCommand.php
 |       `-- Controller
