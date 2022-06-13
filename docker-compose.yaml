@@ -1,7 +1,8 @@
 version: "3.4"
 
 services:
-  rover:
+  mars_rover:
+    container_name: mars_rover
     build:
       context: .
     restart: unless-stopped
