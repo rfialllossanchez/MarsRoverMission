@@ -7,7 +7,7 @@ namespace App\Rover\Application\Model\Command;
 use App\Rover\Application\Factory\CommandCollectionFactory;
 use App\Rover\Application\Factory\PlanetSingletonFactory;
 use App\Rover\Application\Factory\RoverSingletonFactory;
-use App\Rover\Application\Service\RoverPositionUpdater;
+use App\Rover\Application\Service\RoverPositionUpdaterByCommand;
 use App\Rover\Domain\Exception\ObstacleDetectedException;
 use App\Rover\Domain\ValueObject\CommandValueObject;
 use App\Shared\Domain\Bus\Command\CommandHandler;
@@ -19,7 +19,7 @@ final class SendRoverCommandHandler implements CommandHandler
         private LoggerInterface $logger,
         private RoverSingletonFactory $createRover,
         private PlanetSingletonFactory $createPlanet,
-        private RoverPositionUpdater $updateRoverPosition,
+        private RoverPositionUpdaterByCommand $updateRoverPosition,
         private CommandCollectionFactory $createCommandCollection,
     )
     {
@@ -34,7 +34,7 @@ final class SendRoverCommandHandler implements CommandHandler
         /** @var CommandValueObject $nextCommand */
         foreach ($commandCollection as $nextCommand) {
             try {
-                $this->notifyAction($nextCommand);
+                $this->reportAction($nextCommand);
 
                 ($this->updateRoverPosition)(
                     $nextCommand,
@@ -49,7 +49,7 @@ final class SendRoverCommandHandler implements CommandHandler
         }
     }
 
-    private function notifyAction(CommandValueObject $nextCommand): void
+    private function reportAction(CommandValueObject $nextCommand): void
     {
         $this->logger->notice(
             sprintf('Rover is moving to %s...', $nextCommand->beauty())

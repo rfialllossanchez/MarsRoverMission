@@ -8,7 +8,7 @@ use App\Rover\Domain\Planet;
 use App\Rover\Domain\Rover;
 use App\Rover\Domain\ValueObject\CommandValueObject;
 
-final class RoverPositionUpdater
+final class RoverPositionUpdaterByCommand
 {
     public function __construct(
         private PlanetObstacleDetector $detectObstacle,

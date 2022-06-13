@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Rover\Application\Model\Query;
+namespace App\Rover\Infrastructure\Controller;
 
+use App\Rover\Application\Model\Query\GetPlanetDetailsQuery;
 use App\Shared\Domain\Bus\Command\CommandBus;
 use App\Shared\Domain\Bus\Query\QueryBus;
 use App\Shared\Domain\Bus\Query\Response;

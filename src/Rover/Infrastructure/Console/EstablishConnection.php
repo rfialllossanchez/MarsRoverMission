@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Rover\Infrastructure\Console;
 
-use App\Rover\Application\Model\Query\GetPlanetDetailsController;
+use App\Rover\Infrastructure\Controller\GetPlanetDetailsController;
 use App\Rover\Infrastructure\Controller\GetRoverPositionController;
 use App\Rover\Infrastructure\Controller\SendRoverCommandsController;
+use App\Rover\Infrastructure\Controller\SetRoverInitialPositionController;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class EstablishConnectionCommand extends Command
+final class EstablishConnection extends Command
 {
     private const AVAILABLE_OPTIONS = [
         '- Press 1 to check planet details',
@@ -25,9 +26,10 @@ final class EstablishConnectionCommand extends Command
 
     public function __construct(
         private LoggerInterface $logger,
-        private SendRoverCommandsController $sendRoverCommands,
-        private GetRoverPositionController $getRoverPosition,
         private GetPlanetDetailsController $getPlanetDetails,
+        private GetRoverPositionController $getRoverPosition,
+        private SendRoverCommandsController $sendRoverCommands,
+        private SetRoverInitialPositionController $setRoverInitialPosition,
     )
     {
         parent::__construct();
@@ -69,6 +71,8 @@ final class EstablishConnectionCommand extends Command
         $this->logger->notice('_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _');
         $this->logger->notice('Initializing...');
         $this->logger->notice('Connection established successfully!');
+        $this->printPlanetDetails();
+        $this->setRoverInitialPosition();
     }
 
     private function printAvailableOptions(): void
@@ -100,6 +104,16 @@ final class EstablishConnectionCommand extends Command
         $commands = readline('Enter commands - [Forward: f, Left: l, Right: r]: ');
 
         ($this->sendRoverCommands)(str_split($commands));
+        $this->printRoverPosition();
+    }
+
+    private function setRoverInitialPosition(): void
+    {
+        $this->logger->notice('Set Rover initial position');
+        $xAxis = (int)readline('X position: ') ?: 0;
+        $yAxis = (int)readline('Y position: ') ?: 0;
+
+        ($this->setRoverInitialPosition)($xAxis, $yAxis);
         $this->printRoverPosition();
     }
 
