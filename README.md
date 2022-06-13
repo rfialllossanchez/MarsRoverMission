@@ -64,3 +64,26 @@ src
 |       `-- Bus
 |       `-- Controller
 ```
+
+### How to use
+1) Execute console app: <pre>$ docker-compose exec mars_rover php ./bin/console app:establish-connection</pre>
+2) Set rover initial position:
+<pre>
+_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _
+|\/| |__| |__/ [__     |__/ |  | |  | |___ |__/    |\/| | [__  [__  | |  | |\ |
+|  | |  | |  \ ___]    |  \ |__|  \/  |___ |  \    |  | | ___] ___] | |__| | \|
+_  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _
+Initializing...
+Connection established successfully!
+Planet information:
+Planet Mars size 200x200 has obstacles in positions: (77,72)
+Set Rover initial position
+</pre>
+3) Select an option:
+<pre>
+Available options: 
+- Press 1 to check planet details
+- Press 2 to check Rover position
+- Press 3 to send commands to Rover
+- Press 4 to finish connection
+</pre>
