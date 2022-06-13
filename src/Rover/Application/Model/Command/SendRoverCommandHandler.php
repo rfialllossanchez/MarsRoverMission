@@ -8,6 +8,7 @@ use App\Rover\Application\Factory\CommandCollectionFactory;
 use App\Rover\Application\Factory\PlanetSingletonFactory;
 use App\Rover\Application\Factory\RoverSingletonFactory;
 use App\Rover\Application\Service\RoverPositionUpdater;
+use App\Rover\Domain\Exception\ObstacleDetectedException;
 use App\Rover\Domain\ValueObject\CommandValueObject;
 use App\Shared\Domain\Bus\Command\CommandHandler;
 use Psr\Log\LoggerInterface;
@@ -32,15 +33,21 @@ final class SendRoverCommandHandler implements CommandHandler
 
         /** @var CommandValueObject $nextCommand */
         foreach ($commandCollection as $nextCommand) {
-            $this->logger->notice(
-                sprintf('Updating Rover position: [%s]', (string)$nextCommand)
-            );
+            try {
+                $this->logger->notice(
+                    sprintf('Updating Rover position: [%s]', (string)$nextCommand)
+                );
 
-            ($this->updateRoverPosition)(
-                $nextCommand,
-                $planet,
-                $rover
-            );
+                ($this->updateRoverPosition)(
+                    $nextCommand,
+                    $planet,
+                    $rover
+                );
+            } catch (ObstacleDetectedException $obstacleDetectedException) {
+                $this->logger->warning(
+                    $obstacleDetectedException->getMessage()
+                );
+            }
         }
     }
 }

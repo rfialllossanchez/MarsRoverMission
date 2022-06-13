@@ -16,7 +16,7 @@ class InvalidCommandException extends DomainException
     )
     {
         parent::__construct(
-            sprintf('Given command [%s] is not valid.', (string)$command),
+            sprintf('Given command [%s] is not valid', (string)$command),
             0,
             $previous
         );

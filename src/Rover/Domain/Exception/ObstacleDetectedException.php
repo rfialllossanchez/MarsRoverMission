@@ -16,7 +16,7 @@ final class ObstacleDetectedException extends DomainException
     )
     {
         parent::__construct(
-            sprintf('Obstacle detected in position [%s].', (string)$position),
+            sprintf('Obstacle detected in position %s', (string)$position),
             0,
             $previous
         );

@@ -40,7 +40,7 @@ final class EstablishConnectionCommand extends Command
         $this->printAvailableOptions();
 
         do {
-            $selectedOption = readline('Select one option: ');
+            $selectedOption = readline('Select an option: ');
             $this->processSelectedOption($selectedOption);
         } while ($this->isSystemRunning);
 
@@ -86,7 +86,7 @@ final class EstablishConnectionCommand extends Command
 
     private function sendRoverCommands(): void
     {
-        $commands = readline('Enter commands: [F, L, R]: ');
+        $commands = readline('Enter commands: [f, l, r]: ');
 
         ($this->sendRoverCommands)(str_split($commands));
         $this->printRoverPosition();
