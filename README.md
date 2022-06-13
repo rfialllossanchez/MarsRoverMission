@@ -65,7 +65,8 @@ src
 ```
 
 ### How to use
-1) Execute console app: <pre>$ docker-compose exec mars_rover php ./bin/console app:establish-connection</pre>
+1) Execute console app: 
+<pre>$ docker-compose exec mars_rover php ./bin/console app:establish-connection</pre>
 2) Set rover initial position:
 <pre>
 _  _ ____ ____ ____    ____ ____ _  _ ____ ____    _  _ _ ____ ____ _ ____ _  _
