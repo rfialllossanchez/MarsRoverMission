@@ -8,7 +8,7 @@ use App\Rover\Domain\Exception\ObstacleDetectedException;
 use App\Rover\Domain\Planet;
 use App\Rover\Domain\Position;
 
-final class PlanetObstacleDetector
+class PlanetObstacleDetector
 {
     public function __invoke(
         Planet $planet,
