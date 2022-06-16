@@ -65,13 +65,17 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "pre-test" : [
+            "composer install",
+            "composer dumpautoload"
+        ],
         "tests-unit": [
-          "composer dumpautoload",
-          "bin/phpunit --configuration phpunit.xml.dist --testsuite unit"
+            "@pre-test",
+            "bin/phpunit --configuration phpunit.xml.dist --testsuite unit"
         ],
         "tests-integration": [
-          "composer dumpautoload",
-          "bin/phpunit --configuration phpunit.xml.dist --testsuite integration"
+            "@pre-test",
+            "bin/phpunit --configuration phpunit.xml.dist --testsuite integration"
         ]
     },
     "scripts-descriptions": {

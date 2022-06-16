@@ -64,6 +64,14 @@ src
 |   `-- Infrastructure
 |       `-- Bus
 |       `-- Controller
+|
+
+tests
+|-- Integration
+|   |-- Infrastructure
+|-- unit
+|   `-- Application
+|   `-- Domain
 ```
 
 ### How to use
