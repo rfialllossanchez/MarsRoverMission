@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Rover\Domain;
 
-final class Position
+class Position
 {
     public function __construct(
         private int $xAxis,

@@ -8,22 +8,37 @@ use App\Rover\Domain\Position;
 
 class PositionMother
 {
-    public static function PositionThreeAndFive(): Position
+    public static function positionZeroAndOne(): Position
+    {
+        return Position::create(0, 1);
+    }
+
+    public static function positionOneAndOne(): Position
+    {
+        return Position::create(1, 1);
+    }
+
+    public static function positionOneAndTwo(): Position
+    {
+        return Position::create(1, 2);
+    }
+
+    public static function positionThreeAndFive(): Position
     {
         return Position::create(3, 5);
     }
 
-    public static function PositionEigthAndThirteen(): Position
+    public static function positionEigthAndThirteen(): Position
     {
         return Position::create(8, 13);
     }
 
-    public static function PositionTwentyFirstAndThrityFour(): Position
+    public static function positionTwentyFirstAndThrityFour(): Position
     {
         return Position::create(21, 34);
     }
 
-    public static function PositionFiftyFiveAndEihtyNine(): Position
+    public static function positionFiftyFiveAndEihtyNine(): Position
     {
         return Position::create(55, 89);
     }

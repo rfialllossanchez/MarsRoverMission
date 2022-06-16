@@ -15,7 +15,7 @@ class PlanetObstacleDetectorTest extends TestCase
     /** @test */
     public function obstacleDetectedForPosition(): void
     {
-        $nextPosition = PositionMother::PositionEigthAndThirteen();
+        $nextPosition = PositionMother::positionEigthAndThirteen();
         $planet = PlanetMother::planetWithOneObstaclesIn($nextPosition);
 
         $this->expectException(ObstacleDetectedException::class);

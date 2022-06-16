@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Rover\Domain;
 
-final class Rover
+class Rover
 {
     private Position $previousPosition;
 
