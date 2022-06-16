@@ -4,16 +4,22 @@ declare(strict_types=1);
 
 namespace App\Rover\Domain\ValueObject;
 
-class CommandValueObject extends StringValueObject
+class CommandValueObject extends EnumValueObject
 {
     public const FORWARD = 'f';
     public const RIGHT = 'r';
     public const LEFT = 'l';
 
-    public const VALUES_MAPPING = [
-        'f' => 'forward',
-        'r' => 'right',
-        'l' => 'left'
+    protected array $allowedValues = [
+        self::FORWARD,
+        self::RIGHT,
+        self::LEFT
+    ];
+
+    protected const VALUES_MAPPING = [
+        self::FORWARD => 'forward',
+        self::RIGHT => 'right',
+        self::LEFT => 'left'
     ];
 
     public static function createFromValue(string $value): CommandValueObject
