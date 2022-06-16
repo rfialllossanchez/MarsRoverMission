@@ -89,3 +89,10 @@ Available options:
 - Press 3 to send commands to Rover
 - Press 4 to finish connection
 </pre>
+
+### Execute tests
+1) Unit tests: 
+<pre>$ docker-compose exec mars_rover composer tests-unit</pre>
+2) Integration tests:
+<pre>$ docker-compose exec mars_rover composer tests-integration</pre>
+
