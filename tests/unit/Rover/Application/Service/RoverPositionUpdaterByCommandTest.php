@@ -20,6 +20,8 @@ class RoverPositionUpdaterByCommandTest extends TestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         /**
          * To consider: in this case we are using the domain class to check expected method usage
          * in a more complex system we should mock the provided external dependency for instance
@@ -30,6 +32,8 @@ class RoverPositionUpdaterByCommandTest extends TestCase
 
     protected function tearDown(): void
     {
+        parent::tearDown();
+
         unset(
             $this->rover
         );

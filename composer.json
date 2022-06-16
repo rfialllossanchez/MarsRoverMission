@@ -65,8 +65,14 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "tests-unit": "bin/phpunit --configuration phpunit.xml.dist --testsuite unit",
-        "tests-integration": "bin/phpunit --configuration phpunit.xml.dist --testsuite integration"
+        "tests-unit": [
+          "composer dumpautoload",
+          "bin/phpunit --configuration phpunit.xml.dist --testsuite unit"
+        ],
+        "tests-integration": [
+          "composer dumpautoload",
+          "bin/phpunit --configuration phpunit.xml.dist --testsuite integration"
+        ]
     },
     "scripts-descriptions": {
         "tests-unit": "Runs all unit tests.",
