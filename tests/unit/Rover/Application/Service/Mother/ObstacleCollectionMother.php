@@ -29,13 +29,13 @@ class ObstacleCollectionMother
         $collection = self::emptyCollection();
 
         $collection->add(
-            Obstacle::create(PositionMother::PositionEigthAndThirteen())
+            Obstacle::create(PositionMother::positionOneAndOne())
         );
         $collection->add(
-            Obstacle::create(PositionMother::PositionTwentyFirstAndThrityFour())
+            Obstacle::create(PositionMother::positionZeroAndOne())
         );
         $collection->add(
-            Obstacle::create(PositionMother::PositionFiftyFiveAndEihtyNine())
+            Obstacle::create(PositionMother::positionOneAndTwo())
         );
 
         return $collection;

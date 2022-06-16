@@ -13,6 +13,11 @@ class PositionMother
         return Position::create(0, 1);
     }
 
+    public static function positionOneAndZero(): Position
+    {
+        return Position::create(0, 1);
+    }
+
     public static function positionOneAndOne(): Position
     {
         return Position::create(1, 1);
@@ -26,20 +31,5 @@ class PositionMother
     public static function positionThreeAndFive(): Position
     {
         return Position::create(3, 5);
-    }
-
-    public static function positionEigthAndThirteen(): Position
-    {
-        return Position::create(8, 13);
-    }
-
-    public static function positionTwentyFirstAndThrityFour(): Position
-    {
-        return Position::create(21, 34);
-    }
-
-    public static function positionFiftyFiveAndEihtyNine(): Position
-    {
-        return Position::create(55, 89);
     }
 }

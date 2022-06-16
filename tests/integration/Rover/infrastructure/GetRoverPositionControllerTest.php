@@ -18,6 +18,11 @@ class GetRoverPositionControllerTest extends KernelTestCase
     private CommandBus $commandBus;
     private LoggerInterface $logger;
 
+    private const EXPECTED_ROVER_INITIAL_POSITION = [
+        'X' => 0,
+        'Y' => 0
+    ];
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -44,7 +49,7 @@ class GetRoverPositionControllerTest extends KernelTestCase
     }
 
     /** @test */
-    public function retrieveRoverInitialPosition(): void
+    public function retrieveRoverInitialPositionInZeroAndZeroCoordinates(): void
     {
         $sut = new GetRoverPositionController(
             $this->queryBus,
@@ -54,5 +59,9 @@ class GetRoverPositionControllerTest extends KernelTestCase
         $result = $sut->__invoke();
 
         $this->assertInstanceOf(RoverPositionResponse::class, $result);
+        $this->assertEquals(
+            self::EXPECTED_ROVER_INITIAL_POSITION,
+            $result->toArray()
+        );
     }
 }

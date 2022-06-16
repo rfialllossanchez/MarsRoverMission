@@ -30,15 +30,4 @@ class PlanetMother
             ObstacleCollectionMother::collectionWithOneObstacleIn($position),
         );
     }
-
-
-    public static function planetWithThreeObstacles(): Planet
-    {
-        return new Planet(
-            Planet::DEFAULT_NAME,
-            Planet::DEFAULT_HORIZONTAL_SIZE,
-            Planet::DEFAULT_VERTICAL_SIZE,
-            ObstacleCollectionMother::collectionWithThreeObstacles(),
-        );
-    }
 }

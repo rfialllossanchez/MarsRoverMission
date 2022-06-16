@@ -48,7 +48,9 @@ class RoverPositionUpdaterByCommandTest extends TestCase
         Position $nextPosition
     ): void
     {
-        $planet = PlanetMother::planetWithoutObstacles();
+        $planet = PlanetMother::planetWithOneObstaclesIn(
+            PositionMother::positionThreeAndFive()
+        );
 
         $this->rover->expects($this->once())
             ->method('updatePosition');
@@ -75,7 +77,7 @@ class RoverPositionUpdaterByCommandTest extends TestCase
         return [
             'Update Rover position to forward' => [
                 'command' => CommandValueObject::createFromValue(CommandValueObject::FORWARD),
-                'nextPosition' => PositionMother::positionZeroAndOne()
+                'nextPosition' => PositionMother::positionOneAndZero()
             ],
             'Update Rover position to right' => [
                 'command' => CommandValueObject::createFromValue(CommandValueObject::RIGHT),
