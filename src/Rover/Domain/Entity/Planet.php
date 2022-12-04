@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rover\Domain;
+namespace App\Rover\Domain\Entity;
 
 use App\Rover\Domain\Collection\ObstacleCollection;
 
@@ -14,9 +14,9 @@ final class Planet
     public const DEFAULT_OBSTACLES = 10;
 
     public function __construct(
-        private string $name,
-        private int $horizontalSize,
-        private int $verticalSize,
+        private string $name = self::DEFAULT_NAME,
+        private int $horizontalSize = self::DEFAULT_HORIZONTAL_SIZE,
+        private int $verticalSize = self::DEFAULT_VERTICAL_SIZE,
         private ObstacleCollection $obstacles,
     )
     {
@@ -50,6 +50,7 @@ final class Planet
                 return true;
             }
         }
+        
         return false;
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rover\Domain;
+namespace App\Rover\Domain\Entity;
 
 final class Obstacle
 {

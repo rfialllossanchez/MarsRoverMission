@@ -7,7 +7,7 @@ namespace App\Rover\Domain\Exception;
 use DomainException;
 use Throwable;
 
-class InvalidEnumValueException extends DomainException
+final class InvalidEnumValueException extends DomainException
 {
     public function __construct($message, Throwable $previous = null)
     {

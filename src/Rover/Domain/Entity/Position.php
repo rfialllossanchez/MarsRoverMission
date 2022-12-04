@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Rover\Domain;
+namespace App\Rover\Domain\Entity;
 
-class Position
+final class Position
 {
     public function __construct(
         private int $xAxis,
@@ -30,6 +30,10 @@ class Position
 
     public function __toString(): string
     {
-        return sprintf('(%d,%d)', $this->xAxis, $this->yAxis);
+        return sprintf(
+            '(%d,%d)', 
+            $this->xAxis, 
+            $this->yAxis
+        );
     }
 }

@@ -6,7 +6,7 @@ namespace App\Rover\Domain\ValueObject;
 
 use App\Rover\Domain\Exception\InvalidEnumValueException;
 
-abstract class EnumValueObject
+abstract class StringEnum
 {
     /** @var string[] */
     protected array $allowedValues = [];

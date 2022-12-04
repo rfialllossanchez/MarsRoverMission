@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Rover\Domain\ValueObject;
 
-class CommandValueObject extends EnumValueObject
+class Command extends StringEnum
 {
     public const FORWARD = 'f';
     public const RIGHT = 'r';

@@ -1,36 +1,34 @@
 <p align="center">
-  <a href="http://www.intrepidmuseum.org/The-Intrepid-Experience/Past-Exhibitions/Mission-to-Mars-(Mars-Rover-exhibit)/images/mars_banner.aspx?width=676&height=268">
-    <img src="http://www.intrepidmuseum.org/The-Intrepid-Experience/Past-Exhibitions/Mission-to-Mars-(Mars-Rover-exhibit)/images/mars_banner.aspx?width=676&height=268"/>
-  </a>
+  <img src="http://www.intrepidmuseum.org/The-Intrepid-Experience/Past-Exhibitions/Mission-to-Mars-(Mars-Rover-exhibit)/images/mars_banner.aspx?width=676&height=268"/>
 </p>
 
 <h1 align="center">
-  Mars Rover Mission with PHP 8.1 and Symfony 6
+  Mars Rover Mission, Hexagonal Architecture & CQRS with Symfony
 </h1>
 
 ## Environment Setup
 
-### Needed tools
-
+### Required tools
 1. [Install Docker](https://www.docker.com/get-started)
-2. Clone this project: `git@github.com:rogerfiallos/MarsRoverMission.git`
-3. Move to the project folder: `cd MarsRoverMission`
+2. [install Docker Compose](https://docs.docker.com/compose/install/)
+3. Clone the project: `git@github.com:rogerfiallos/MarsRoverMission.git`
 
-### Application execution
+### Start up application 
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/)
-2. Run `docker-compose build --pull --no-cache` to build fresh images
-3. Run `docker-compose up -d`
-5. Run `docker-compose down --remove-orphans` to stop the Docker containers.
+1. Move to root project folder: `cd MarsRoverMission`
+2. To build fresh docker images run: `docker-compose build --pull --no-cache`
+3. To start docker containers run: `docker-compose up -d`
+5. To stop docker containers run: `docker-compose down --remove-orphans`
 
-## Project explanation
+## Project Details
 
-Simple console application to send commands to Mars rover.
+Simple console application built with Symfony 6 and PHP 8. Following hexagonal architecture and CQRS pattern.
 
-### Structure
+The purpose is to send commands to move rover on the martian surface.
+
+## Structure
 
 ```scala
-$ tree -L 4 src
 
 src
 |-- Rover

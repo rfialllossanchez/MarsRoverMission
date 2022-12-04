@@ -10,13 +10,10 @@ use Throwable;
 
 final class ObstacleDetectedException extends DomainException
 {
-    public function __construct(
-        Position $position,
-        ?Throwable $previous = null
-    )
+    public function __construct(Position $position, ?Throwable $previous = null)
     {
         parent::__construct(
-            sprintf('Obstacle detected in position %s', (string)$position),
+            sprintf('Obstacle detected in position %s', (string) $position),
             0,
             $previous
         );
